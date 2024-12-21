@@ -1,0 +1,33 @@
+debezium.sink.type=jdbc
+debezium.sink.jdbc.enabled=true
+quarkus.log.level=TRACE
+debezium.format.value=json
+log4j.logger.io.debezium.relational.history=DEBUG, stdout
+debezium.source.offset.storage.file.filename=data/offsets.dat
+debezium.source.offset.flush.interval.ms=0
+debezium.source.schema.history.internal=io.debezium.storage.file.history.FileSchemaHistory
+debezium.source.schema.history.internal.file.filename=data/schema_history.dat
+debezium.source.connector.class=io.debezium.connector.planetscale.PlanetScaleConnector
+debezium.source.vitess.keyspace=pantryclub
+debezium.source.vitess.tablet.type=MASTER
+debezium.source.database.hostname=aws.connect.psdb.cloud
+debezium.source.database.port=443
+debezium.source.database.user=
+debezium.source.database.password=
+debezium.source.topic.prefix=connector-test
+
+# JDBC Connection details
+debezium.sink.jdbc.connection.url=
+debezium.sink.jdbc.connection.driver=org.duckdb.DuckDBDriver
+
+# Table and schema handling
+debezium.sink.jdbc.table.name.format=${topic}  # Maps Kafka topic names to database table names
+debezium.sink.jdbc.auto.create=true           # Automatically create tables if they don't exist
+debezium.sink.jdbc.auto.evolve=true           # Automatically evolve schemas to match new data
+
+# Write behavior
+debezium.sink.jdbc.insert.mode=upsert         # Use upsert mode for insert/update handling
+debezium.sink.jdbc.delete.enabled=true        # Enable handling of delete operations
+
+# Batch settings
+debezium.sink.jdbc.batch.size=500             # Number of records to process in a batch
