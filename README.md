@@ -1,1 +1,1 @@
-# debezium
+Just run fly deploy and it should work, should send events to the pantryclub-dbt server

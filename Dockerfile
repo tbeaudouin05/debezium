@@ -1,13 +1,14 @@
-# Use the official Debezium Server image as the base image
-FROM quay.io/debezium/server:latest
+# Use an appropriate base image, such as OpenJDK for running Java applications
+FROM openjdk:11-jre-slim
 
 # Set the working directory inside the container
 WORKDIR /debezium
 
-# Copy your custom configuration file into the container
-COPY conf/application.properties conf/application.properties
+# Copy the Debezium Server distribution files into the container
+COPY . .
 
-COPY lib/debezium-connector-planetscale-2.4.0.Final-jar-with-dependencies.jar lib/debezium-connector-planetscale-2.4.0.Final-jar-with-dependencies.jar
+# Make the run.sh script executable
+RUN chmod +x run.sh
 
 # Expose the port that Debezium Server listens on
 EXPOSE 8080
