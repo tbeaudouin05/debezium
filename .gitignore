@@ -13,10 +13,6 @@ logs/
 *.tmp
 *.temp
 
-# Configuration files
-conf/*.properties
-conf/*.yaml
-
 # Operating system files
 .DS_Store
 Thumbs.db
@@ -30,5 +26,8 @@ Thumbs.db
 *.swp
 
 
-# Dependency directories
-lib/
+# Exclude all files in the lib/ directory
+lib/*
+
+# Allow the exceptional file
+!lib/debezium-connector-planetscale-2.4.0.Final-jar-with-dependencies.jar

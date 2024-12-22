@@ -1,14 +1,13 @@
 # Use the official Debezium Server image as the base image
 FROM quay.io/debezium/server:latest
 
-# Set the working directory to the directory where Debezium expects its files
+# Set the working directory inside the container
 WORKDIR /debezium
 
-# Copy your local folder content into the container's /debezium directory
-COPY . .
+# Copy your custom configuration file into the container
+COPY conf/application.properties conf/application.properties
 
-# Ensure the run.sh script is executable
-RUN chmod +x run.sh
+COPY lib/debezium-connector-planetscale-2.4.0.Final-jar-with-dependencies.jar lib/debezium-connector-planetscale-2.4.0.Final-jar-with-dependencies.jar
 
 # Expose the port that Debezium Server listens on
 EXPOSE 8080
