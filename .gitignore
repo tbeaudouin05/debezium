@@ -26,12 +26,5 @@ Thumbs.db
 *.swp
 
 
-# Exclude all files in the lib/ directory
-lib/*
-
-# Allow the exceptional file
-!lib/debezium-connector-planetscale-2.4.0.Final-jar-with-dependencies.jar
-
-
 data/offsets.dat
 data/schema_history.dat
