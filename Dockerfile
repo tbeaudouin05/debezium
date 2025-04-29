@@ -15,3 +15,4 @@ EXPOSE 8080
 
 # Start Debezium Server
 CMD ["./run.sh"]
+
